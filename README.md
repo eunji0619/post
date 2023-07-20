@@ -2,7 +2,10 @@
 
 ## Project setup
 ```
-npm install
+npm install -g @vue/cli
+vue.cmd create post
+
+npm install axios
 ```
 
 ### Compiles and hot-reloads for development
