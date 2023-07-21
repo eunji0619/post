@@ -54,7 +54,7 @@ export default{
       console.log(this.title)
       this.content = content;
       console.log(this.content)
-      var data = `\r\n{\r\n    "title" :${title},\r\n    "content": ${title}r\n}`;
+      var data = `\r\n{\r\n    "title" :"${this.title}",\r\n    "content": "${this.content}"r\n}`;
 
       // var date = new Date();
       // this.createAt = date.getFullYear() + "-"
