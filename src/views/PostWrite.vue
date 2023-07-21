@@ -49,55 +49,42 @@ export default{
   },
   methods:{
     savebtn(title, content){
+      // this.insertId = insertId;
+      this.title = title;
+      console.log(this.title)
+      this.content = content;
+      console.log(this.content)
+      var data = `\r\n{\r\n    "title" :${title},\r\n    "content": ${title}r\n}`;
 
-    //   var config = {
-    //   method: 'get',
-    //   maxBodyLength: Infinity,
-    //   url: `https://dev.safeean.com:63101/test/post`,
-    //   headers: { },
-    // };
-    // axios(config)
-    // .then((response) =>{
-    //   console.log(JSON.stringify(response.data));
-    //   this.insertId = response.data.total
-      
-    // })
-    // .catch((error) =>{
-    //   console.log(error);
-    // });
+      // var date = new Date();
+      // this.createAt = date.getFullYear() + "-"
+      //   + ('0'+ date.getMonth() + 1) + "-"    //getMonth()는 0~11을 반환 -> +1
+      //   +('0'+ date.getDate()) + " "
+      //   + ('0' + date.getHours()) + ":" 
+      //   + ('0' + date.getMinutes())+ ":" 
+      //   + ('0' + date.getSeconds());
 
-      this.insertId = insertId;
-      this.data.title = title;
-      console.log(this.data.title)
-      this.data.content = content;
-      console.log(this.data.content)
-      var date = new Date();
-      this.createAt = date.getFullYear() + "-"
-        + ('0'+ date.getMonth() + 1) + "-"    //getMonth()는 0~11을 반환 -> +1
-        +('0'+ date.getDate()) + " "
-        + ('0' + date.getHours()) + ":" 
-        + ('0' + date.getMinutes())+ ":" 
-        + ('0' + date.getSeconds());
-
-      if(!this.data.title){
-        console.log(this.data.title)
+      if(!this.title){
+        console.log(this.title)
         alert('제목이 입력되지 않았습니다.')
       }
-      else if(!this.data.content){
-        console.log(this.data.content)
+      else if(!this.content){
+        console.log(this.content)
         alert('내용이 입력되지 않았습니다.')
       }
       else{
         var config = {
         method: 'post',
         maxBodyLength: Infinity,
-        url: `https://dev.safeean.com:63101/test/post/${this.insertId}`,
+        url: `https://dev.safeean.com:63101/test/post`,
         headers: { },
         data:data
         };
         axios(config)
         .then((response) =>{
           console.log(response.data);
+          this.insertId = response.data.data.index+1;
+
           // this.list = response.data.data
           alert("게시글 작성 완료");
           this.$router.push("/"); // 게시글 list페이지로 이동
