@@ -83,9 +83,7 @@ export default{
         axios(config)
         .then((response) =>{
           console.log(response.data);
-          this.insertId = response.data.data.index+1;
-
-          // this.list = response.data.data
+          this.list = response.data.data
           alert("게시글 작성 완료");
           this.$router.push("/"); // 게시글 list페이지로 이동
         })
